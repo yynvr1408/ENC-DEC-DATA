@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>WEB MEDIA CRYPT</title>
+		<script src="https://kit.fontawesome.com/f26cdbc509.js" crossorigin="anonymous"></script>
+	</head>
+	
+	<style>
+		body {
+	  		font-family: 'Helvetica', 'Arial', 'sans-serif'; 
+			color: #fff;
+			font-size: 11pt;	
+			background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);	
+		}
+
+		a, a:link, a:visited, a:active {
+			color: blue;
+			text-decoration: underline;
+		}
+
+		a:hover {
+			cursor:pointer;
+			color: red;
+		}
+
+		.black10pointcourier {
+	  		font-family: 'courier'; 
+			color: black;
+			font-size: 10pt;		
+		}
+
+		.containerX {
+			width: 60%;
+			margin: 50px auto 20px;
+			background-image: linear-gradient(130deg, #0e71cec0 0%, #382e0ca8 100%);
+			padding: 20px 20px 20px;
+			border-radius: 40px;
+
+		}
+
+		
+
+		.divTablefullwidth{
+			display: table;
+			width: 100%;
+		}
+
+		.divTable{
+			display: table;
+		}
+
+		.divTableRow {
+			display: table-row;
+		}
+		.divTableCell {
+			display: table-cell;
+			padding: 3px 3px;
+		}
+		.divTableBody {
+			display: table-row-group;
+		}
+
+		.greenspan {
+			color: green;	  
+		}
+
+		.redspan {
+			color: red;	  
+		}
+		
+		#ews
+		{
+			display: none;
+		}
+		#bis
+		{
+			display: none;
+		}
+		#btns
+		{
+			display: flex;
+			flex-direction: row;
+			justify-content:space-around ;
+			align-items: center;
+		
+			
+
+		}
+		
+		button
+		{
+			height: 40px;
+			width: 150px;
+			border-radius: 20px;
+			border: navajowhite;
+			background-color: #D9AFD9;
+			background-image: linear-gradient(30deg, #d653d6 0%, #6fa1ebd8 100%);
+				color: #ffffff;
+			font-weight: 800;
+
+		}
+		#tit
+		{
+			background: rgb(174,186,238);
+			background: radial-gradient(circle, rgba(179, 185, 212, 0.904) 32%, rgba(212, 247, 15, 0.877) 80%);
+			background-clip: text;
+			color: transparent;
+			animation: slideIn 2s ease; transform-origin: top;
+			font-size: 50px;
+			margin: 30px 200px 20px;
+			font-style: Bold;
+			text-align: center;
+			
+		}
+		#imd
+		{
+			margin-top: 20px;
+			height: 50px;
+			width: 50px;
+			border-radius: 50%;;
+			size: 200px
+			
+		}
+		#tip
+		{
+			color:rgb(32, 212, 221);
+			font-size:30px;
+			font-style:Bold ;
+			transform-origin: top;
+			text-align: center;
+		}
+
+		#ips
+		{
+			font-size: 18px;
+			font-weight: 600;
+			padding: 20px;
+			margin: 20px;
+		}
+		
+		input
+				{
+					height: 30px;
+					width: 180px;
+					border-radius: 40px;
+					padding-left: 30px;
+					font-size: 15px;
+					outline:none;
+					margin: 20px;
+					border: none;
+				}
+
+				#ips img
+				{
+					margin-right:-45px ;
+					height: 20px;
+					width: 20px;
+					border-radius: 50px;
+					display: inline-flex;
+					position: relative;
+				}
+
+
+				.dropzone 
+				{
+					margin-top: -200px;
+					margin-right: 50px;
+					float: right;
+					border: none;
+					background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);
+					border-radius: 50px;
+					padding-left: 30px;
+					max-height: 200px;
+					
+					width: 330px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-size: large;
+					font-weight: 800;
+					color: #1b0774;
+				}
+
+				.dropzone img{
+					height: 50px;
+					width: 50px;
+					border-radius: 50px;
+					transition: 100ms;
+				}
+				.dropzone img:hover{
+					height: 50px;
+					width: 50px;
+					border-radius: 50px;
+					filter: drop-shadow(10px 10px cyan);
+				}
+				
+				.dropzone  p a{
+					font-size: small;
+					font-weight: 800;
+					color: #000000;
+					text-decoration: none;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+				}
+
+				#dps
+				{
+					font-size: 18px;
+					font-weight: 600;
+					padding: 20px;
+					margin: 20px;
+				}
+				#dips input
+				{
+					height: 30px;
+					width: 180px;
+					border-radius: 40px;
+					padding-left: 30px;
+					font-size: 15px;
+					outline:none;
+					margin: 20px;
+					border: none;
+					
+				}
+
+				#dips img
+				{
+					margin-right:-50px ;
+					height: 20px;
+					width: 20px;
+					border-radius: 50px;
+					
+					position: relative;
+					margin-top: 30px;
+					
+				}
+	</style>	
+	<body>
+		<div class=containerX>
+			
+		<div class=container>
+			<div class="divTableCell" id="btns" >
+				<h1>
+				<button id="btnRefresh" onClick="javascript:location.reload();">Refresh</button>
+				<button id="btnDivEncrypt" onClick="javascript:switchdiv('encrypt');">Encrypt</button>
+				<button id="btnDivDecrypt" onClick="javascript:switchdiv('decrypt');">Decrypt</button>
+				</h1>
+			</div>
+			<div class="divTablefullwidth">
+				<div class="divTableBody">
+					<div class="divTableRow">
+						<div class="divTableCell" style="float: center;">
+							<h1 id="tit" >Media Crypt</h1>
+							
+							<h4  id="tip">All types of media Encryptor</h4>
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class=container>
+			<H2 style="color:#F067B4; font-weight:900; transform-origin: top;" >Protect Your Media Here!</H2>
+	
+			
+		</div>
+
+		<div class="container" id=divEncryptfile>
+			<h2 style="color:#1dfdeb;font-size:25px; transform-origin: top;">ENCRYPTION</h2>
+			
+			
+			
+			<div class="divTable">
+				<div class="divTableBody" id="ips">
+					<div class="divTableRow" >
+						<div class="divTableCell">Set-Password </div>
+						<div class="divTableCell"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAaBJREFUSEvN1T9IVmEUx/GPIrgkIUHRkJY1RdAQ1WqRm4sZglFrU9JUtLcURLu75FIQLTaIkVYYpJR7/4gWrUVyqOjPPfAIL5f7+t7nDcELl/vv4fc953fPOU+HbT46tllfu4BduIlzOIplzOAefjUG3Q7gBB7gYEX2bzCK95vfcgEH8Ba9SWARL1Imx9O7FZzEz3jOBdzHeBJ6VMBG0n1nsudaeg777uQCQuQHupLIX1xCQDe1IqNTmC0yG8oF7MHXku9/MIaH6X1EfQOf0ZcLiPXr6ClBfuM8HuNVyuApzuYCDmMJuyuqJ0pzssjwavp2F9dzAAN4iX01GvN7UcbH8Kku4Egqxb01xDdwAU/q9kHYslCkv79CfA3d6Z98Sf0xgQ91O3krW74Vo+E03rXKqlmjhS3zFZFH1NGlUZ5Rii2PKsBWtjzDYEvVhgVlwKH0Q8ueR7QxFuK6+j+AqOUrFQLTuJgj3KyK5nCmQSgm4+1iWj6v63k5iLJFH9HfsOgyptqJvFkGMRmHi/N1ivpWeYfKheXuB7n62RvOzgP8A7iJRxkueMy7AAAAAElFTkSuQmCC"/><input id=txtEncpassphrase type=password size=30 onkeyup=javascript:encvalidate(); value='' placeholder="enter your password"></div>
+						<div class="divTableCell" id="ews">(minumum length eight characters, make sure it strong!)</div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableCell">Confirm-Password</div>
+						<div class="divTableCell"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAaBJREFUSEvN1T9IVmEUx/GPIrgkIUHRkJY1RdAQ1WqRm4sZglFrU9JUtLcURLu75FIQLTaIkVYYpJR7/4gWrUVyqOjPPfAIL5f7+t7nDcELl/vv4fc953fPOU+HbT46tllfu4BduIlzOIplzOAefjUG3Q7gBB7gYEX2bzCK95vfcgEH8Ba9SWARL1Imx9O7FZzEz3jOBdzHeBJ6VMBG0n1nsudaeg777uQCQuQHupLIX1xCQDe1IqNTmC0yG8oF7MHXku9/MIaH6X1EfQOf0ZcLiPXr6ClBfuM8HuNVyuApzuYCDmMJuyuqJ0pzssjwavp2F9dzAAN4iX01GvN7UcbH8Kku4Egqxb01xDdwAU/q9kHYslCkv79CfA3d6Z98Sf0xgQ91O3krW74Vo+E03rXKqlmjhS3zFZFH1NGlUZ5Rii2PKsBWtjzDYEvVhgVlwKH0Q8ueR7QxFuK6+j+AqOUrFQLTuJgj3KyK5nCmQSgm4+1iWj6v63k5iLJFH9HfsOgyptqJvFkGMRmHi/N1ivpWeYfKheXuB7n62RvOzgP8A7iJRxkueMy7AAAAAElFTkSuQmCC"/><input id=txtEncpassphraseretype type=password size=30 onkeyup=javascript:encvalidate(); value='' placeholder="Re-enter your password"></div>
+						<div class="divTableCell"><span class=greenspan id=spnCheckretype></span></div>
+					</div>
+				</div>
+			</div>
+
+			<p> </p>
+
+			<div>
+				<div class=dropzone id="encdropzone" ondrop="drop_handler(event);" ondragover="dragover_handler(event);" ondragend="dragend_handler(event);">
+					<p> <a onclick=javascript:encfileElem.click();>Choose Your File  <br><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAUpJREFUSEvF1b8uREEUx/HPRk1BeAIhoVKjktCSKDReACWJjohEQ6HgBVQiEiWJSPx5AI1Gg0KpQY09yUjW5t697tqNqebOnPl9zz3nzJmKNo9Km/VlAWaxicEC+Bo2ihzMAtxhqOhg2l/BdiPbLMDnL8W/zRpCWgEIUC6kVYBcSCsBmZBWAwLyQ/O3gGPs4yJldgJLmM4oiNKAZezkVFbchfW6vVKAQ8wlgT3Mp/kBFtP8FFM1kFKAkWoYbhHiC3WeRsgCMomzZgEd+MBrNUyddYA3dKEbL80CQvS9nYBx3BSEKCrqvNk/OMFMQZKPEB34e5RKcsM+kxSHcYme9F0aEOfiou3iOon0YTXdj+fU3q8SpClAXgd/wigCEg9U5Ku31vivD05oPSCKISADuC8CRMK20J/ndsb6Y7WSxhLkx/a/PPolHC82/QLdZkYZQcjMUgAAAABJRU5ErkJggg=="/></a></p>
+					<p><span id=spnencfilename></span></p>
+				</div>
+				<input type="file" id="encfileElem" style="display:none" onchange="selectfile(this.files)">
+			</div>
+
+			<p> </p>
+
+			<div class="divTable">
+				<div class="divTableBody">
+					<div class="divTableRow">
+						<div class="divTableCell"><button id=btnEncrypt onclick=javascript:encryptfile(); disabled>Encrypt</button></div>
+						<div class="divTableCell"><span id=spnEncstatus></span></div>
+					</div>
+				</div>
+			</div>
+
+			<p> </p>
+
+			<div>
+				<a id=aEncsavefile hidden><button>Save Encrypted Media</button></a>
+			</div>
+		
+			<p> </p>
+		</div>
+
+		<div class="container" id=divDecryptfile>
+			<h2 id="dex" style="color:#1dfdeb;font-size:25px; transform-origin: top;">DECRYPTION</h2>
+			<p><font-size:25></font-size:25></p>
+
+			<div class="divTable">
+				<div class="divTableBody">
+					<div class="divTableRow">
+						<div  id="dps" class="divTableCell">Password </div>
+						<div id="dips" class="divTableCell"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAaBJREFUSEvN1T9IVmEUx/GPIrgkIUHRkJY1RdAQ1WqRm4sZglFrU9JUtLcURLu75FIQLTaIkVYYpJR7/4gWrUVyqOjPPfAIL5f7+t7nDcELl/vv4fc953fPOU+HbT46tllfu4BduIlzOIplzOAefjUG3Q7gBB7gYEX2bzCK95vfcgEH8Ba9SWARL1Imx9O7FZzEz3jOBdzHeBJ6VMBG0n1nsudaeg777uQCQuQHupLIX1xCQDe1IqNTmC0yG8oF7MHXku9/MIaH6X1EfQOf0ZcLiPXr6ClBfuM8HuNVyuApzuYCDmMJuyuqJ0pzssjwavp2F9dzAAN4iX01GvN7UcbH8Kku4Egqxb01xDdwAU/q9kHYslCkv79CfA3d6Z98Sf0xgQ91O3krW74Vo+E03rXKqlmjhS3zFZFH1NGlUZ5Rii2PKsBWtjzDYEvVhgVlwKH0Q8ueR7QxFuK6+j+AqOUrFQLTuJgj3KyK5nCmQSgm4+1iWj6v63k5iLJFH9HfsOgyptqJvFkGMRmHi/N1ivpWeYfKheXuB7n62RvOzgP8A7iJRxkueMy7AAAAAElFTkSuQmCC"/><input id=txtDecpassphrase type=password size=30 onkeyup=javascript:decvalidate(); value='' placeholder="Enter your Password"></div>
+					</div>
+				</div>
+			</div>
+
+			<p> </p>
+
+			<div>
+					<div class=dropzone  id="decdropzone" ondrop="drop_handler(event);" ondragover="dragover_handler(event);" ondragend="dragend_handler(event);">
+						<p> <a onclick=javascript:encfileElem.click();>Choose Your File  <br><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAUpJREFUSEvF1b8uREEUx/HPRk1BeAIhoVKjktCSKDReACWJjohEQ6HgBVQiEiWJSPx5AI1Gg0KpQY09yUjW5t697tqNqebOnPl9zz3nzJmKNo9Km/VlAWaxicEC+Bo2ihzMAtxhqOhg2l/BdiPbLMDnL8W/zRpCWgEIUC6kVYBcSCsBmZBWAwLyQ/O3gGPs4yJldgJLmM4oiNKAZezkVFbchfW6vVKAQ8wlgT3Mp/kBFtP8FFM1kFKAkWoYbhHiC3WeRsgCMomzZgEd+MBrNUyddYA3dKEbL80CQvS9nYBx3BSEKCrqvNk/OMFMQZKPEB34e5RKcsM+kxSHcYme9F0aEOfiou3iOon0YTXdj+fU3q8SpClAXgd/wigCEg9U5Ku31vivD05oPSCKISADuC8CRMK20J/ndsb6Y7WSxhLkx/a/PPolHC82/QLdZkYZQcjMUgAAAABJRU5ErkJggg=="/></a></p>
+						<p><span id=spndecfilename></span></p>
+					</div>
+					<input type="file" id="decfileElem" style="display:none" onchange="selectfile(this.files)">
+			</div>
+
+			<p> </p>
+
+			<div class="divTable">
+				<div class="divTableBody">
+					<div class="divTableRow">
+						<div class="divTableCell"><button id=btnDecrypt onclick=javascript:decryptfile(); disabled>Decrypt</button></div>
+						<div class="divTableCell"><span id=spnDecstatus></span></div>
+					</div>
+				</div>
+			</div>
+
+			<p> </p>
+
+			<div>
+				<a id=aDecsavefile hidden><button>Save Decrypted Media</button></a>
+			</div>
+		
+			<p> </p>
+		</div>
+
+		<div class="container">
+
+		</div>
+
+	</div>
+		<BR>
+	</body>
+</html>
+
+
+<script type="text/javascript">
+	var mode=null;
+	var objFile=null;
+	switchdiv('encrypt');
+
+	function switchdiv(t) {
+		if(t=='encrypt') {
+			divEncryptfile.style.display='block';
+			divDecryptfile.style.display='none';
+			btnDivEncrypt.disabled=true;
+			btnDivDecrypt.disabled=false;
+			mode='encrypt';
+		} else if(t=='decrypt') {
+			divEncryptfile.style.display='none';
+			divDecryptfile.style.display='block';
+			btnDivEncrypt.disabled=false;
+			btnDivDecrypt.disabled=true;
+			mode='decrypt';
+		}
+	}
+
+	function encvalidate() {
+		if(txtEncpassphrase.value.length>=8 && txtEncpassphrase.value==txtEncpassphraseretype.value) { 
+		  spnCheckretype.classList.add("greenspan");
+		  spnCheckretype.classList.remove("redspan");
+		  spnCheckretype.innerHTML='&#10004;';
+		} else { 
+		  spnCheckretype.classList.remove("greenspan");
+		  spnCheckretype.classList.add("redspan");
+  		  spnCheckretype.innerHTML='&#10006;';
+		}
+
+		if( txtEncpassphrase.value.length>=8 && txtEncpassphrase.value==txtEncpassphraseretype.value && objFile ) { btnEncrypt.disabled=false; } else { btnEncrypt.disabled=true; }
+	}
+
+	function decvalidate() {
+		if( txtDecpassphrase.value.length>0 && objFile ) { btnDecrypt.disabled=false; } else { btnDecrypt.disabled=true; }
+	}
+
+	//drag and drop functions:
+	//https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop
+	function drop_handler(ev) {
+		console.log("Drop");
+		ev.preventDefault();
+		// If dropped items aren't files, reject them
+		var dt = ev.dataTransfer;
+		if (dt.items) {
+			// Use DataTransferItemList interface to access the file(s)
+			for (var i=0; i < dt.items.length; i++) {
+				if (dt.items[i].kind == "file") {
+					var f = dt.items[i].getAsFile();
+					console.log("... file[" + i + "].name = " + f.name);
+					objFile=f;
+				}
+			}
+		} else {
+			// Use DataTransfer interface to access the file(s)
+			for (var i=0; i < dt.files.length; i++) {
+				console.log("... file[" + i + "].name = " + dt.files[i].name);
+			}  
+			objFile=file[0];
+		}		 
+		displayfile()
+		if(mode=='encrypt') { encvalidate(); } else if(mode=='decrypt') { decvalidate(); }
+	}
+
+	function dragover_handler(ev) {
+		console.log("dragOver");
+		// Prevent default select and drag behavior
+		ev.preventDefault();
+	}
+
+	function dragend_handler(ev) {
+		console.log("dragEnd");
+		// Remove all of the drag data
+		var dt = ev.dataTransfer;
+		if (dt.items) {
+			// Use DataTransferItemList interface to remove the drag data
+			for (var i = 0; i < dt.items.length; i++) {
+				dt.items.remove(i);
+			}
+		} else {
+			// Use DataTransfer interface to remove the drag data
+			ev.dataTransfer.clearData();
+		}
+	}
+
+	function selectfile(Files) {
+		objFile=Files[0];
+		displayfile()
+		if(mode=='encrypt') { encvalidate(); } else if(mode=='decrypt') { decvalidate(); }
+	}
+
+	function displayfile() {
+		var s;
+		var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+		var bytes=objFile.size;
+		var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+		if(i==0) { s=bytes + ' ' + sizes[i]; } else { s=(bytes / Math.pow(1024, i)).toFixed(2) + ' ' + sizes[i]; }
+
+		if(mode=='encrypt') { 
+			spnencfilename.textContent=objFile.name + ' (' + s + ')'; 
+		} else if(mode=='decrypt') {  
+			spndecfilename.textContent=objFile.name + ' (' + s + ')'; 
+		} 
+	}
+
+	function readfile(file){
+		return new Promise((resolve, reject) => {
+			var fr = new FileReader();  
+			fr.onload = () => {
+				resolve(fr.result )
+			};
+			fr.readAsArrayBuffer(file);
+		});
+	}
+
+	async function encryptfile() {
+		btnEncrypt.disabled=true;
+
+		var plaintextbytes=await readfile(objFile)
+		.catch(function(err){
+			console.error(err);
+		});	
+		var plaintextbytes=new Uint8Array(plaintextbytes);
+
+		var pbkdf2iterations=10000;
+		var passphrasebytes=new TextEncoder("utf-8").encode(txtEncpassphrase.value);
+		var pbkdf2salt=window.crypto.getRandomValues(new Uint8Array(8));
+
+		var passphrasekey=await window.crypto.subtle.importKey('raw', passphrasebytes, {name: 'PBKDF2'}, false, ['deriveBits'])
+		.catch(function(err){
+			console.error(err);
+		});
+		console.log('passphrasekey imported');
+
+		var pbkdf2bytes=await window.crypto.subtle.deriveBits({"name": 'PBKDF2', "salt": pbkdf2salt, "iterations": pbkdf2iterations, "hash": 'SHA-256'}, passphrasekey, 384)		
+		.catch(function(err){
+			console.error(err);
+		});
+		console.log('pbkdf2bytes derived');
+		pbkdf2bytes=new Uint8Array(pbkdf2bytes);
+
+		keybytes=pbkdf2bytes.slice(0,32);
+		ivbytes=pbkdf2bytes.slice(32);
+
+		var key=await window.crypto.subtle.importKey('raw', keybytes, {name: 'AES-CBC', length: 256}, false, ['encrypt']) 
+		.catch(function(err){
+			console.error(err);
+		});
+		console.log('key imported');		
+
+		var cipherbytes=await window.crypto.subtle.encrypt({name: "AES-CBC", iv: ivbytes}, key, plaintextbytes)
+		.catch(function(err){
+			console.error(err);
+		});
+
+		if(!cipherbytes) {
+		 	spnEncstatus.classList.add("redspan");
+			spnEncstatus.innerHTML='<p>Error encrypting file.  See console log.</p>';
+			return;
+		}
+
+		console.log('plaintext encrypted');
+		cipherbytes=new Uint8Array(cipherbytes);
+
+		var resultbytes=new Uint8Array(cipherbytes.length+16)
+		resultbytes.set(new TextEncoder("utf-8").encode('Salted__'));
+		resultbytes.set(pbkdf2salt, 8);
+		resultbytes.set(cipherbytes, 16);
+
+		var blob=new Blob([resultbytes], {type: 'application/download'});
+		var blobUrl=URL.createObjectURL(blob);
+		aEncsavefile.href=blobUrl;
+		aEncsavefile.download=objFile.name + '.enc';
+
+	 	spnEncstatus.classList.add("greenspan");
+		spnEncstatus.innerHTML='<p>File encrypted.</p>';
+		aEncsavefile.hidden=false;
+	}
+
+	async function decryptfile() {
+		btnDecrypt.disabled=true;
+
+		var cipherbytes=await readfile(objFile)
+		.catch(function(err){
+			console.error(err);
+		});	
+		var cipherbytes=new Uint8Array(cipherbytes);
+
+		var pbkdf2iterations=10000;
+		var passphrasebytes=new TextEncoder("utf-8").encode(txtDecpassphrase.value);
+		var pbkdf2salt=cipherbytes.slice(8,16);
+
+
+		var passphrasekey=await window.crypto.subtle.importKey('raw', passphrasebytes, {name: 'PBKDF2'}, false, ['deriveBits'])
+		.catch(function(err){
+			console.error(err);
+
+		});
+		console.log('passphrasekey imported');
+
+		var pbkdf2bytes=await window.crypto.subtle.deriveBits({"name": 'PBKDF2', "salt": pbkdf2salt, "iterations": pbkdf2iterations, "hash": 'SHA-256'}, passphrasekey, 384)		
+		.catch(function(err){
+			console.error(err);
+		});
+		console.log('pbkdf2bytes derived');
+		pbkdf2bytes=new Uint8Array(pbkdf2bytes);
+
+		keybytes=pbkdf2bytes.slice(0,32);
+		ivbytes=pbkdf2bytes.slice(32);
+		cipherbytes=cipherbytes.slice(16);
+
+		var key=await window.crypto.subtle.importKey('raw', keybytes, {name: 'AES-CBC', length: 256}, false, ['decrypt']) 
+		.catch(function(err){
+			console.error(err);
+		});
+		console.log('key imported');		
+
+		var plaintextbytes=await window.crypto.subtle.decrypt({name: "AES-CBC", iv: ivbytes}, key, cipherbytes)
+		.catch(function(err){
+			console.error(err);
+		});
+
+		if(!plaintextbytes) {
+		 	spnDecstatus.classList.add("redspan");
+			spnDecstatus.innerHTML='<p>Error decrypting file.  Password may be incorrect.</p>';
+			return;
+		}
+
+		console.log('ciphertext decrypted');
+		plaintextbytes=new Uint8Array(plaintextbytes);
+
+		var blob=new Blob([plaintextbytes], {type: 'application/download'});
+		var blobUrl=URL.createObjectURL(blob);
+		aDecsavefile.href=blobUrl;
+		let myVar =objFile.name;
+		myVar = myVar.substring(0, myVar.length - 4);
+		console.log(myVar);
+		aDecsavefile.download=myVar;
+
+	 	spnDecstatus.classList.add("greenspan");
+		spnDecstatus.innerHTML='<p>File decrypted.</p>';
+		aDecsavefile.hidden=false;
+	}
+
+</script>
